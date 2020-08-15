@@ -1,11 +1,6 @@
 class ApplicationController < ActionController::Base
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
-  def new
-  end
-
-  def creat
-  end
 end
