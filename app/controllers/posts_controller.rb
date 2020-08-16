@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
   def create
@@ -11,12 +11,12 @@ class PostsController < ApplicationController
   def checked
     post = Post.find(params[:id])
     if post.checked then
-      post.update(checked: fales)
+      post.update(checked: false)
     else
       post.update(checked: true)
     end
 
-    item = post.find(params[:id])　#更新したレコードを取得し直し
-    render json: {post: item} #checked.jsに返却
+    item = Post.find(params[:id])
+    render json: { post: item }
   end
 end
